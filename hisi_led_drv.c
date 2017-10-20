@@ -55,7 +55,7 @@ ssize_t led_drv_read(struct file *file, char __user *buf, size_t size, loff_t *p
 {
 	printk(KERN_ALERT "Hisi led driver read!\n");
 	
-    return 0;	
+ 	return 0;	
 }
 
 
@@ -85,7 +85,7 @@ static ssize_t led_drv_write(struct file *file, const char __user *buffer, size_
 		GPIO20_DATA &= ~(0x01 << 5);     // 输出低
 	}	
 	
-    return 0;	
+	return 0;	
 }
 
 
@@ -107,9 +107,9 @@ static int __init led_drv_init(void)
 	alloc_chrdev_region(&dev_id, 0, 1, DEVICE_NAME);            
 	
 	cdev_init(&led_cdev, &led_drv_fops);                        
-    led_cdev.owner = THIS_MODULE;	
+ 	led_cdev.owner = THIS_MODULE;	
 	err = cdev_add(&led_cdev, dev_id, 1);                       
-    if (err) 
+ 	if (err) 
 	{
 		printk("Cannot add Hisi led device!\n");
 	}
@@ -117,7 +117,7 @@ static int __init led_drv_init(void)
 	led_class = class_create(THIS_MODULE, "led_class");         
 	device_create(led_class, NULL, dev_id, NULL, DEVICE_NAME); 
 	
-    return 0;
+	return 0;
 }
 
 
@@ -126,7 +126,7 @@ static void __exit led_drv_exit(void)
 	printk(KERN_ALERT "Hisi led driver exit!\n");
 	
 	cdev_del(&led_cdev);
-    unregister_chrdev_region(dev_id, 1);
+	unregister_chrdev_region(dev_id, 1);
 	
 	device_destroy(led_class, dev_id);
 	class_destroy(led_class);  
