@@ -24,6 +24,11 @@ himm 0x12290400 0x20
 himm 0x12290080 0x00
 </code></pre>
 # 使用说明
+## 下载
+获取源码
+<pre><code>
+git clone https://github.com/yqwung/hi3531a-gpio
+</code></pre>
 ## 编译
 将hi3531a-gpio文件夹放到 Hi3531A_SDK_V1.0.4.0\mpp\extdrv 下  <br />
 <pre><code>
